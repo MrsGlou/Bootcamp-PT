@@ -9,7 +9,7 @@ function averageWord(element) {
   for (i = 0; i < mixedElements.length; i++){
     if(typeof(element) ==="number"){
         sum += mixedElements;
-    }else if (typeof(element) ==="string") {
+    }else {
         sum += mixedElements.length;
     };
   };
