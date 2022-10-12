@@ -17,6 +17,7 @@ const counterWords = [
 ];
 
 function repeatCounter(word) {
+  let contador = 0;
   let indice = [];
   for (let i = 0; i < word.length; i++) {
     for (j = 0; j < word; j++) {
@@ -30,3 +31,8 @@ function repeatCounter(word) {
 }
 
 repeatCounter(counterWords);
+
+
+//array con las veces que se repite (2 bucles, 1 dentro de otro)
+
+//Eliminar los repetidos y devuelves el array 
