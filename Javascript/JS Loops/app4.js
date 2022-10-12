@@ -12,3 +12,4 @@ const alien = {
 for (const key in alien){
     console.log(`La clave es ${key} y su valor es ${alien[key]}`)
 };
+ 
