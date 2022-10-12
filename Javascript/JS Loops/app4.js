@@ -1,5 +1,5 @@
 /*-------------------------------------------------
----------**Iteración #3: Probando For...in**-------
+---------**Iteración #4: Probando For...in**-------
 -------------------------------------------------*/
 
 const alien = {
@@ -12,4 +12,3 @@ const alien = {
 for (const key in alien){
     console.log(`La clave es ${key} y su valor es ${alien[key]}`)
 };
- 
