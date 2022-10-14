@@ -12,11 +12,13 @@ const alumns = [
 
 alumns.forEach((alumn) => {
   if (
-    alumns.T1 == alumns.T2 == true ||
-    alumns.T1 == alumns.T3 == true  ||
-    alumns.T2 == alumns.T3 == true 
+    (alumn.T1 == true && alumn.T2 == true) ||
+    (alumn.T1 == true && alumn.T3 == true) ||
+    (alumn.T2 == true && alumn.T3 == true)
   ) {
     alumn.isApproved = true;
+  } else {
+    alumn.isApproved = false;
   }
 });
 
