@@ -12,7 +12,7 @@ const toys = [
 
 const toysWithCat = [];
 for (let toy of toys) {
-  if (toy.name.includes('gato')) {
+  if (toy.name.includes("gato")) {
     toysWithCat.push(toy);
   }
 }

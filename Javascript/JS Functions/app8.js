@@ -32,7 +32,20 @@ function repeatCounter(word) {
 
 repeatCounter(counterWords);
 
+function deteleteDuplicates(element) {
+  const listDuplicates = [];
+  duplicates.forEach((element) => {
+    if (!listDuplicates.includes(element)) {
+      listDuplicates.push(element);
+    }
+  });
+  return listDuplicates;
+}
+
+console.log(deteleteDuplicates(duplicates));
 
 //array con las veces que se repite (2 bucles, 1 dentro de otro)
 
-//Eliminar los repetidos y devuelves el array 
+//Eliminar los repetidos y devuelves el array
+
+//Falta por hacer

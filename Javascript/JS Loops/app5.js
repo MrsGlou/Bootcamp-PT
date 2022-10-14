@@ -11,11 +11,11 @@ const placesToTravel = [
   { id: 59, name: "Madagascar" },
 ];
 
+const destiny = [];
+
 for (let i = 0; i < placesToTravel.length; i++) {
-  const destiny = [];
-  if (placesToTravel.id != (11 || 40)) {
-    placesToTravel.push(destiny);
-    console.log(destiny);
+  if (placesToTravel[i].id != 11 || placesToTravel[i].id != 40) {
+    destiny.push(placesToTravel[i]);
   }
 }
 
