@@ -12,7 +12,8 @@ const toys = [
 
 const toysWithCat = [];
 for (let toy of toys) {
-  if (toy.name.includes("gato")) {
+  if (toy.name.includes("gato")) { //Elimina el que incluye la palabra gato
+  } else {
     toysWithCat.push(toy);
   }
 }
