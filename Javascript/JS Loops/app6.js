@@ -10,12 +10,12 @@ const toys = [
   { id: 40, name: "El gato felix" },
 ];
 
-const toysWithCat = [];
+const toysWithoutCat = [];
 for (let toy of toys) {
   if (toy.name.includes("gato")) { //Elimina el que incluye la palabra gato
   } else {
-    toysWithCat.push(toy);
+    toysWithoutCat.push(toy);
   }
 }
 
-console.log(toysWithCat);
+console.log(toysWithoutCat);

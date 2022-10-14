@@ -13,9 +13,19 @@ const placesToTravel = [
 
 const destiny = [];
 
-for (let i = 0; i < placesToTravel.length; i++) {
-  if (placesToTravel[i].id != 11 || placesToTravel[i].id != 40) {
-    destiny.push(placesToTravel[i]);
+/*for (let i = 0; i < placesToTravel.length; i++) {
+  if (placesToTravel[i].id.includes(11 || 40)) {
+  } else {
+    destiny.push(placesToTravel);
+  }
+}*/
+
+console.log(destiny);
+
+for (let placeToTravel of placesToTravel) {
+  if (placeToTravel.id == 11 || placeToTravel.id == 40)  {    
+  } else {
+    destiny.push(placeToTravel);
   }
 }
 
