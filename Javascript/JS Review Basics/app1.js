@@ -29,7 +29,6 @@ const categoriesNew = [];
 
 for (let movie of movies) {
   for (let categorie of movie.categories) {
-    
     if (!categoriesNew.includes(categorie)) {
       categoriesNew.push(categorie);
     }
