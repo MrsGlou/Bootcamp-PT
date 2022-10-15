@@ -22,26 +22,24 @@ console.log(names);
 const newName = "Anacleto";
 const names2 = users.map((user) => {
   if (user.name.startsWith("A")) {
-     name: user.name = newName;
+    name: user.name = newName;
   } else {
     name: user.name;
   }
-  return ({name: user.name});
+  return { name: user.name };
 });
 
 console.log(names2);
 
-//4.3 Dado el siguiente array, devuelve una lista que contenga los valores 
-//de la propiedad .name y añade al valor de .name el string ' (Visitado)' 
+//4.3 Dado el siguiente array, devuelve una lista que contenga los valores
+//de la propiedad .name y añade al valor de .name el string ' (Visitado)'
 //cuando el valor de la propiedad isVisited = true.
 
-
-
 const cities = [
-	{isVisited:true, name: 'Tokyo'}, 
-	{isVisited:false, name: 'Madagascar'},
-	{isVisited:true, name: 'Amsterdam'}, 
-	{isVisited:false, name: 'Seul'}
+  { isVisited: true, name: "Tokyo" },
+  { isVisited: false, name: "Madagascar" },
+  { isVisited: true, name: "Amsterdam" },
+  { isVisited: false, name: "Seul" },
 ];
 
 const visit = " Visitado";
@@ -51,7 +49,7 @@ const city = cities.map((city) => {
   } else {
     name: city.name;
   }
-  return (city.name);
+  return city.name;
 });
 
 console.log(city);
