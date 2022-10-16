@@ -17,35 +17,29 @@ const counterWords = [
 ];
 
 function repeatCounter(word) {
-  let contador = 0;
   let indice = [];
   for (let i = 0; i < word.length; i++) {
-    for (j = 0; j < word; j++) {
-      if (i == words[j]) {
-        indice[i] = indice[i] + 1;
-        indice.push(word);
-      }
+    if (indice[word[i]]) { //Comprobamos que la key esta dentro de nuestra nueva 
+      indice[word[i]] = indice[word[i]] + 1;
+    } else {
+      indice[word[i]] = 1;
     }
   }
-  console.log(indice);
+  return indice;
 }
 
-repeatCounter(counterWords);
+console.log(repeatCounter(counterWords));
 
-function deteleteDuplicates(element) {
-  const listDuplicates = [];
-  duplicates.forEach((element) => {
-    if (!listDuplicates.includes(element)) {
-      listDuplicates.push(element);
+function repeatCounter(word) {
+  let indice = [];
+  for (let i = 0; i < word.length; i++) {
+      if (word[i] in indice) {
+      indice[word[i]] = indice[word[i]] + 1;
+    } else {
+      indice[word[i]] = 1;
     }
-  });
-  return listDuplicates;
+  }
+  return indice;
 }
 
-console.log(deteleteDuplicates(duplicates));
-
-//array con las veces que se repite (2 bucles, 1 dentro de otro)
-
-//Eliminar los repetidos y devuelves el array
-
-//Falta por hacer
+console.log(repeatCounter(counterWords));
