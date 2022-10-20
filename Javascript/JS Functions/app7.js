@@ -24,4 +24,4 @@ function finderName(name) {
   }
 }
 
-finderName("Xabier");
+finderName("Natasha");
