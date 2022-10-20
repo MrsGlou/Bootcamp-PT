@@ -28,3 +28,5 @@ const streamers = [
 
 const lol = streamers.filter (streamer => streamer.gameMorePlayed == "League of Legends");
 console.log(lol);
+
+
