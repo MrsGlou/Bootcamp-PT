@@ -51,3 +51,4 @@ const findMutation = mutations.find(
 );
 
 const alienMutation = {...findAlien, mutation:{...findMutation}}
+console.log(alienMutation);

@@ -49,4 +49,4 @@ const league = streamers.filter(streamer => streamer.gameMorePlayed.includes("Le
         (streamers.gameMorePlayed.toUpperCase());
     }
 }
-console.log(league);
+console.log(league);gege
