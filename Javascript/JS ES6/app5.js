@@ -31,22 +31,26 @@ const lol = streamers.filter(
 );
 console.log(lol);
 
-//5.4 Dado el siguiente array, utiliza .filter() para generar un nuevo array 
-//con los streamers que incluyan el caracter 'u' en su propiedad .name. Recomendamos 
+//5.4 Dado el siguiente array, utiliza .filter() para generar un nuevo array
+//con los streamers que incluyan el caracter 'u' en su propiedad .name. Recomendamos
 //usar la funcion .includes() para la comprobación.
 
-const nameWithU = streamers.filter(streamer => streamer.name.includes("u"));
+const nameWithU = streamers.filter((streamer) => streamer.name.includes("u"));
 console.log(nameWithU);
 
-//5.5 utiliza .filter() para generar un nuevo array con los streamers que incluyan 
-//el caracter 'Legends' en su propiedad .gameMorePlayed. Recomendamos usar la funcion 
+//5.5 utiliza .filter() para generar un nuevo array con los streamers que incluyan
+//el caracter 'Legends' en su propiedad .gameMorePlayed. Recomendamos usar la funcion
 //.includes() para la comprobación.
-//Además, pon el valor de la propiedad .gameMorePlayed a MAYUSCULAS cuando 
+//Además, pon el valor de la propiedad .gameMorePlayed a MAYUSCULAS cuando
 //.age sea mayor que 35.
 
-const league = streamers.filter(streamer => streamer.gameMorePlayed.includes("League"));{
-    if(streamers.age > 35){
-        (streamers.gameMorePlayed.toUpperCase());
-    }
-}
-console.log(league);gege
+const leagues = streamers.filter((streamer) =>
+  streamer.gameMorePlayed.includes("League")
+);
+
+for (const league of leagues) {
+  if (league.age > 35) {
+    league.gameMorePlayed.toUpperCase();
+  }
+  console.log(league)
+};
