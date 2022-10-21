@@ -58,23 +58,23 @@ const morethan35 = leagues.map((league) => {
 
 console.log(morethan35);
 
-
-
-
 //5.6 Dado el siguiente html y javascript, utiliza .filter() para mostrar por consola
 //los streamers que incluyan la palabra introducida en el input. De esta forma, si
 //introduzco 'Ru' me deberia de mostrar solo el streamer 'Rubius'. Si
 //introduzco 'i', me deberia de mostrar el streamer 'Rubius' e 'Ibai'.
 
-/*<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-             <meta http-equiv="X-UA-Compatible" content="ie=edge">
-             <title>Document</title>
-</head>
-<body>
-  <input type="text" data-function="toFilterStreamers"/>
-</body>
-</html>*/
+
+const input = document.querySelector("input");
+function findName() {
+  streamers.filter((streamer) => {
+    if (input.value == "") {
+      console.log("Introduce un valor");
+    } else if (
+      streamer.name.toLowerCase().includes(input.value.toLowerCase())
+    ) {
+      console.log(streamer.name);
+    }
+  });
+}
+
+input.addEventListener("input",findName);
