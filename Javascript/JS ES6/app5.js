@@ -45,14 +45,36 @@ console.log(nameWithU);
 //.age sea mayor que 35.
 
 const leagues = streamers.filter((streamer) =>
-  streamer.gameMorePlayed.includes("League")
+  streamer.gameMorePlayed.includes("Legends")
 );
 const morethan35 = leagues.map((league) => {
   if (league.age > 35) {
     league.gameMorePlayed.toUpperCase();
+    return league;
+  } else {
+    return league;
   }
-  return { league };
 });
 
-console.log(leagues);
-fa
+console.log(morethan35);
+
+
+
+
+//5.6 Dado el siguiente html y javascript, utiliza .filter() para mostrar por consola
+//los streamers que incluyan la palabra introducida en el input. De esta forma, si
+//introduzco 'Ru' me deberia de mostrar solo el streamer 'Rubius'. Si
+//introduzco 'i', me deberia de mostrar el streamer 'Rubius' e 'Ibai'.
+
+/*<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+             <meta http-equiv="X-UA-Compatible" content="ie=edge">
+             <title>Document</title>
+</head>
+<body>
+  <input type="text" data-function="toFilterStreamers"/>
+</body>
+</html>*/
