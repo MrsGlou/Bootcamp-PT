@@ -49,8 +49,11 @@ const leagues = streamers.filter((streamer) =>
 );
 const morethan35 = leagues.map((league) => {
   if (league.age > 35) {
-    league.gameMorePlayed.toUpperCase();
-    return league;
+    return {
+      name :league.name,
+      age : league.age,
+      gameMorePlayed : league.gameMorePlayed.toUpperCase(),
+    };
   } else {
     return league;
   }
@@ -83,3 +86,4 @@ input.addEventListener("input", findName);
 //introduzco 'Ru' me deberia de mostrar solo el streamer 'Rubius'. Si introduzco 'i', 
 //me deberia de mostrar el streamer 'Rubius' e 'Ibai'.
 //En este caso, muestra solo los streamers filtrados cuando hagamos click en el button.
+
