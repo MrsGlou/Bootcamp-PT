@@ -24,6 +24,11 @@ console.log(sum);
 //7.2 Dado el mismo array, haz una suma de todos las notas de los examenes de los 
 //alumnos que esten aprobados usando la función .reduce().
 
-
-const sumApprov = exams.reduce((acc, alumn) => acc + alumn.score, 0);
+const aprrov = exams.filter(alumn => alumn.score > 5);
+const sumApprov = aprrov.reduce((acc, alumn) => acc + alumn.score, 0);
 console.log(sumApprov);
+
+//7.3 Dado el mismo array, haz la media de las notas de todos los examenes .reduce().
+
+const media = exams.reduce((acc, alumn) => (acc + alumn.score), 0)/exams.length;
+console.log(media);

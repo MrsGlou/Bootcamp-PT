@@ -47,10 +47,11 @@ console.log(nameWithU);
 const leagues = streamers.filter((streamer) =>
   streamer.gameMorePlayed.includes("League")
 );
-
-for (const league of leagues) {
+const morethan35 = leagues.map((league) => {
   if (league.age > 35) {
     league.gameMorePlayed.toUpperCase();
   }
-  console.log(league)
-};
+  return { league };
+});
+
+console.log(leagues);
