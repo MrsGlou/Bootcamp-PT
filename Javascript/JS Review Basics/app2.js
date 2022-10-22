@@ -57,7 +57,6 @@ const mediaFunct = (array) => {
   for (let volume of array) {
     acumulador += volume;
   }
-  //media = suma total / cantidad de elementos
   let media = acumulador / array.length;
   return media;
 };
