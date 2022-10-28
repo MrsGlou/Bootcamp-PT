@@ -87,3 +87,19 @@ input.addEventListener("input", findName);
 //me deberia de mostrar el streamer 'Rubius' e 'Ibai'.
 //En este caso, muestra solo los streamers filtrados cuando hagamos click en el button.
 
+const input2 = document.querySelector("input");
+const btn = document.querySelector("button")
+
+function findName() {
+  streamers.filter((streamer) => {
+    if (input2.value == "") {
+      console.log("Introduce un valor");
+    } else if (
+      streamer.name.toLowerCase().includes(input2.value.toLowerCase())
+    ) {
+      console.log(streamer.name);
+    }
+  });
+}
+
+btn.addEventListener("click", findName);
