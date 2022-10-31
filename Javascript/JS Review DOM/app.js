@@ -34,22 +34,25 @@ for (const car of cars) {
 const countries1 = [
   { title: "China", imgUrl: "https://picsum.photos/300/200?random=1" },
   { title: "España", imgUrl: "https://picsum.photos/300/200?random=2" },
-  { title: "Portigal", imgUrl: "https://picsum.photos/300/200?random=3" },
+  { title: "Portugal", imgUrl: "https://picsum.photos/300/200?random=3" },
   { title: "Brasil", imgUrl: "https://picsum.photos/300/200?random=4" },
   { title: "Italia", imgUrl: "https://picsum.photos/300/200?random=5" },
 ];
 
 const div2 = document.createElement("div");
 document.body.appendChild(div2);
-countries1.forEach(element => {
-  div2.innerHTML += `<h4>${element.title}</h4><img>${element.imgUrl}</img>`
+countries1.forEach((element) => {
+  div2.innerHTML += `<h4>${element.title}</h4><img src=${element.imgUrl} />`;
 });
 
-//1.5 Basandote en el ejercicio anterior. Crea un botón que elimine el último 
+
+//1.5 Basandote en el ejercicio anterior. Crea un botón que elimine el último
 //elemento de la lista.
 const btn = document.createElement("button");
 let newText = document.createTextNode("Pulsame");
-btn.appendChild(newText)
+btn.appendChild(newText);
 document.body.appendChild(btn);
 
-btn.addEventListener("click", countries1.pop());
+btn.addEventListener("click", function() {
+  countries1.pop()
+});
