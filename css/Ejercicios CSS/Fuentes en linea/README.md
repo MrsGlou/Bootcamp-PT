@@ -1,27 +1,35 @@
-Edita el fichero index.html para aplicarle la clase **.small** a los dos párrafos usando el atributo correspondiente
+**Introducción**
+
+---
+
+Edita el fichero de estilos para aplicarle .myTitle una fuente diferente. Estas fuentes las podemos obtener de Google Fonts.
+
+[Google Fonts](https://fonts.google.com/)
 
 **Autoevaluación**
 
 ---
 
-- Las dos etiquetas p tienen que tener un tamaño de fuente de 9px.
-- Solo tienes que editar el fichero HTML, ya que el CSS ya está generado y enlazado.
+- Escoger una fuente de Google Fonts.
+- Aplicar el font-family correspondiente a la clase .myTitle.
 
 **Html code**
 
 ---
 
 ```html
-<!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="./styles.css" />
-		<title>Selector de clase</title>
-	</head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
 
+		<!-- Añadir la línea correspondiente -->
+
+		<link rel="stylesheet" type="text/css" href="./styles.css" />
+		<title>Fuentes en linea</title>
+	</head>
 	<body>
-		<p>Hello!</p>
-		<p>Rocker!</p>
+		<h1 class="myTitle">Mi nueva fuente</h1>
 	</body>
 </html>
 ```
@@ -31,7 +39,7 @@ Edita el fichero index.html para aplicarle la clase **.small** a los dos párraf
 ---
 
 ```css
-.small{
-    font-size: 9px;
+.myTitle {
+	/* Añadir font-family */
 }
 ```
