@@ -8,7 +8,7 @@ const COLOR_PALETTE = {
   "#037971": "Pine Green",
 };
 
-//Vamos a unificar todo lo realizado en una funcion
+//Declarar las variables a nivel global y no por scope
 const addOptionsToColorPicker = () => {
   //Rercuperamos el select
   const colorPickerSelect = document.querySelector("#color-picker");
@@ -18,12 +18,13 @@ const addOptionsToColorPicker = () => {
     //Creamos el elemento option en el HTML
     const option = document.createElement("option");
     //Introduciomos en el elemento el valor de color
+    //Option tiene dos cosas, el valor y el texto.
     option.value = color;
     option.innerText = COLOR_PALETTE[color];
 
     //Metemos las opciones al select con un append
     colorPickerSelect.append(option);
-  });
+  }); 
 };
 
 //Cambio del color de fondo por medio de un evento
@@ -32,13 +33,12 @@ const addEventListenerToColorPicker = () => {
   const colorPickerSelect = document.querySelector("#color-picker");
   const colorName = document.querySelector("#color-name");
 
-
   colorPickerSelect.addEventListener("change", (event) => {
-    //Almacenamos el código de color
+    //Almacenamos el código de color, el valor (#fff) del elemento que hay seleccionado
     const newColor = event.target.value;
     //Aplicamos al brackground el código del color seleccionado
     document.body.style.backgroundColor = newColor;
-    const colorNameText = `${COLOR_PALETTE[newColor]} | ${newColor}`
+    const colorNameText = `${COLOR_PALETTE[newColor]} | ${newColor}`;
     colorName.innerText = COLOR_PALETTE[newColor] ? colorNameText : "-";
   });
 };

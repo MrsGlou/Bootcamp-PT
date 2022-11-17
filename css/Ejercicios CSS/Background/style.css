@@ -5,16 +5,16 @@
 }
 
 body {
- background-image: url("https://www.transparenttextures.com/patterns/always-grey.png");
- background-attachment: fixed ; /*Bloquear el fondo para que no se mueva la imagen*/
+  background-image: url("https://www.transparenttextures.com/patterns/always-grey.png");
+  background-attachment: fixed; /*Bloquear el fondo para que no se mueva la imagen*/
 }
 
 h1 {
-background-color: aquamarine;
+  background-color: aquamarine;
 }
 
-.content{
+.content {
   background-color: blue;
   background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
-  background-size: calc(110px * 0.1) calc(90px *  0.1);
+  background-position: 10%;
 }
