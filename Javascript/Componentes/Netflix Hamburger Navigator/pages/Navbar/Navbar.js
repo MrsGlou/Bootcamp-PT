@@ -1,20 +1,58 @@
-//import { listNav } from "../../data/InfoNav";
-/*
+import "./Navbar.css";
+import { createHome } from "../Home/Home";
+import { LISTNAV } from "../../data/InfoNav";
+
 export const createNav = () => {
-  document.querySelector('#navbar').innerHTML = `
-  <div>
-    <button class="btn open-btn"><i class="fas fa-bars"></i></button>
-    <img
-          src="https://images.ctfassets.net/4cd45et68cgf/7LrExJ6PAj6MSIPkDyCO86/542b1dfabbf3959908f69be546879952/Netflix-Brand-Logo.png?w=684&h=456"
-          alt="Logo" class="logo">
-    <ul class= "list">
-    </div>
-    `
-addEvents ()
-    
+  let index = 0;
+  for (let clave in LISTNAV) {
+    index++;
+
+    // EN FUNCION DEL TIPO LLAMAMOS A DOS FUNCIONES DIFERENTES
+    if (typeof LISTNAV[clave] === "string") {
+      pintarLista(clave, LISTNAV[clave], index);
+    } else {
+      pintarSub(clave, LISTNAV[clave], index);
+    }
+    addListenersNav();
+  }
 };
 
-const addEvents = () => {
-    document.querySelector('.open-btn').addEventListener('click', () => {} )
+/// ---------- PINTA LOS LI SIN SUBINDICE -------------
+const pintarLista = (item, url, index) => {
+  // URL  lo utilizaremos cuando le metamos en donde queremos navegar
+  const lista = document.querySelector('.list')
+  lista.innerHTML += `
+  <li class = '${index}'>${item}</li>
+  `
+}
 
-}*/
+/// ---------- PINTA LOS LI CON SUBINDICE -------------
+const pintarSub = (item, url, index) => {
+  // URL  serian los elementos subindice del li
+  const lista = document.querySelector(".list");
+
+  lista.innerHTML += `
+  <li class = '${index}'>${item}
+    <ul class= 'ul${index}'>
+    </ul>
+  </li>
+  `;
+   //creamos el nombre del elemento a apuntar en una constante
+   const apuntar = `.ul${index}`
+   const ulSub = document.querySelector(apuntar)
+   //url recordar es el elemento con los objetos subindice
+   for (let clave in url) {
+     ulSub.innerHTML += `
+     <li>${clave}</li>`
+   }
+};
+
+const addListenersNav = () => {
+  const close_btn = document.querySelector(".close-btn");
+  const nav = document.querySelectorAll(".nav");
+
+  close_btn.addEventListener("click", () => {
+    nav.forEach((nav_el) => nav_el.classList.remove("visible"));
+    createHome();
+  });
+};
