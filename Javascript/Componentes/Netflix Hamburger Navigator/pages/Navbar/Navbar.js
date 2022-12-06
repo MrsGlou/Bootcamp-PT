@@ -13,18 +13,18 @@ export const createNav = () => {
     } else {
       pintarSub(clave, LISTNAV[clave], index);
     }
-    addListenersNav();
   }
+  addListenersNav();
 };
 
 /// ---------- PINTA LOS LI SIN SUBINDICE -------------
 const pintarLista = (item, url, index) => {
   // URL  lo utilizaremos cuando le metamos en donde queremos navegar
-  const lista = document.querySelector('.list')
+  const lista = document.querySelector(".list");
   lista.innerHTML += `
   <li class = '${index}'>${item}</li>
-  `
-}
+  `;
+};
 
 /// ---------- PINTA LOS LI CON SUBINDICE -------------
 const pintarSub = (item, url, index) => {
@@ -37,14 +37,14 @@ const pintarSub = (item, url, index) => {
     </ul>
   </li>
   `;
-   //creamos el nombre del elemento a apuntar en una constante
-   const apuntar = `.ul${index}`
-   const ulSub = document.querySelector(apuntar)
-   //url recordar es el elemento con los objetos subindice
-   for (let clave in url) {
-     ulSub.innerHTML += `
-     <li>${clave}</li>`
-   }
+  //creamos el nombre del elemento a apuntar en una constante
+  const apuntar = `.ul${index}`;
+  const ulSub = document.querySelector(apuntar);
+  //url recordar es el elemento con los objetos subindice
+  for (let clave in url) {
+    ulSub.innerHTML += `
+     <li>${clave}</li>`;
+  }
 };
 
 const addListenersNav = () => {
