@@ -25,3 +25,19 @@ const runTimeAsync = () => {
 };
 
 runTimeAsync();
+
+//2.2 Convierte la siguiente función con un fetch utilizando async-await. Recuerda que para usar .fetch() tendrás que probar el ejercicio en el navegador;
+
+function getCharacters () {
+    fetch('https://rickandmortyapi.com/api/character').then(res => res.json()).then(characters => console.log(characters));
+}
+
+getCharacters();
+
+const getCharactersAwait = async() => {
+    const data = await fetch('https://rickandmortyapi.com/api/character');
+    const json = await data.json() 
+    return await Response.json()
+};
+
+await getCharactersAwait()
