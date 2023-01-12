@@ -1,27 +1,31 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 //En la función app mapeamos los characters. la key es importante, deben tener un identificador numerico (index o x.id)
 const App = () => {
-  const [characterList, setCharactersList] = React.useState([]);
+  const [characterList, setCharactersList] = useState([]);
 
- React.useEffect(() => {
-    async () => {
+ useEffect(() => {
+    (async () => {
       let data = await fetch("https://rickandmortyapi.com/api/character/").then(
         (res) => res.json()
       );
       setCharactersList(data.results);
-    };
+    })();
   }, []);
 
   return (
-    <div className="App">
+    <figure className="App">
       {characterList.map((character) => (
-        <div key={character.id}>
-          <h2>name: {character.name}</h2>
+        <div className="characterCard" key={character.id}>
+          <h2>{character.name}</h2>
+          <h2>{character.status}</h2>
+          <img src={character.image} alt={character.name} />
+          <h2>{character.origin.name}</h2> 
+
         </div>
       ))}
-    </div>
+    </figure>
   );
 };
 

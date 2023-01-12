@@ -1,15 +1,13 @@
+import { useState } from "react";
 
 const ShowButton = () => {
-  /*  let greeting = "Hola";
-    let farewell = "Adios";
-    const change () =>{
-        x == false ? greeting : farewell
-    };*/
+    const [ShowText,  setShowText] = useState(true);
+
 
     return (
         <div>
-            <h3>{change}</h3>
-            <button onClick={() => x ==false }>Click</button>
+            <h2>{ShowText ? "Hola" : "Adios"}</h2>
+            <button onClick={() => setShowText(false)}>Change</button>
         </div>
     );
 };
