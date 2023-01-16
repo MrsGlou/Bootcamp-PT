@@ -1,0 +1,6 @@
+.title{
+    text-decoration:double;
+    color:#2c9c85;
+    display: flex;
+    justify-content: flex-end;
+}
