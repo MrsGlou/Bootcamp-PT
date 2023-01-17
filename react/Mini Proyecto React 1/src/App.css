@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.app{
+.App{
   display: flex;
   flex-wrap: wrap;
   justify-items: space-around;
