@@ -1,11 +1,10 @@
 import React from "react";
 
-const Card = (props) => {
-  const { character } = props;
+const Card = ({character}) => {
+
   return (
     <li>
       <h2>id:{character.id}</h2>
-      <h2>name: {character.name}</h2>
     </li>
   );
 };

@@ -1,11 +1,5 @@
-
-
 const Footer = () => {
+  return <p>Andrea Pérez</p>;
+};
 
-    return (
-        <p></p>
-
-    )
-}
-
-export default Footer
+export default Footer;

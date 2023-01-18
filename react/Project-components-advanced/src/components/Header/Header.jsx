@@ -1,10 +1,11 @@
-import Title from "./Title.jsx"
-import "./Header.css"
+import Title from "../Title/Title";
+import "./Header.css";
 
 const Header = () => {
-    return (
-        <Title />
-    )
+
+  return(
+   <Title text ={'Rick and Morty Characters'}/>
+  );
 };
 
 export default Header;
