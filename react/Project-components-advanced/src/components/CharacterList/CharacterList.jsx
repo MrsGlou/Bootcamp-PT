@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
-import Card from "../Card/Card";
+import {useState, useEffect} from 'react'
+import Card from '../Card/Card';
+
 
 const CharacterList = () => {
-  const [characterList, setCharacterList] = useState([]);
+ 
+    const [characterList, setCharacterList] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -15,12 +17,13 @@ const CharacterList = () => {
   }, []);
 
   return (
+    
     <ul>
-      {characterList.map((character) => {
-        <Card key={character.id} character={character} />;
-      })}
+      {characterList.map((character) => 
+          <Card key={character.id} character={character} />
+      )}
     </ul>
   );
-};
+}
 
-export default CharacterList;
+export default CharacterList
