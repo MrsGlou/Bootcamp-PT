@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import './Pokedex.css';
+import "./Pokedex.css";
 
 const Pokedex = () => {
   const [numPage, setNumPage] = useState(0);
@@ -24,17 +24,24 @@ const Pokedex = () => {
     <section>
       <h3>Pokedex</h3>
       {loaded ? (
-        <ul className="pokedex">
-            {pokemons.map((pokemon, index) =>(
-                <div key={index}>
-                    <NavLink to={`/pokedex/${index+1}`}>
-                        <p className="poke-name">{pokemon.name}</p>
-                        <p>{index + 1}</p>
-                    </NavLink>
-                </div>
+        <div>
+        <button className="pointed">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+          <ul className="pokedex">
+            {pokemons.map((pokemon, index) => (
+              <li key={index} className="pokemon">
+                <NavLink to={`/pokedex/${index + 1}`}>
+                  <p className="poke-name">{pokemon.name}</p>
+                  <p>{index + 1}</p>
+                </NavLink>
+              </li>
             ))}
-        </ul>
-      ):(
+          </ul>
+        </div>
+      ) : (
         <h2>Loading...</h2>
       )}
     </section>
