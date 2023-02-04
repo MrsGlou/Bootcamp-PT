@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import About from "./components/About/About";
 import Education from "./components/Education/Education";
@@ -9,13 +10,32 @@ import { CV } from "./CV/Cv.js";
 const { hero, education, experience, languages, habilities, volunteer } = CV;
 
 function App() {
+  const [showEducation, setShowEducation] = useState(true);
 
   return (
     <div className="App">
       <Hero hero={hero} />
       <About hero={hero} />
-      <Education education={education} />
-      <Experience experience={experience} />
+      <button
+        className="custom-btn btn-4"
+        onClick={() => setShowEducation(true)}
+      >
+        Education
+      </button>
+      <button
+        className="custom-btn btn-4"
+        onClick={() => setShowEducation(false)}
+      >
+        Experience
+      </button>
+      <div>
+        {showEducation ? (
+          <Education education={education} />
+        ) : (
+          <Experience experience={experience} />
+        )}
+      </div>
+
       <More
         languages={languages}
         habilities={habilities}

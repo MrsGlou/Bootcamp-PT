@@ -4,7 +4,7 @@ import "./Hero.css"
 const Hero = ({ hero }) => {
   return (
     <div className="hero">
-      <img src={hero.image} alt={hero.name} referrerPolicy="no-referrer"/>
+      <img src={hero.image} alt={hero.name}/>
       <div className="card">
         <h2>
           {hero.name + hero.surname}
@@ -24,3 +24,4 @@ const Hero = ({ hero }) => {
 };
 
 export default Hero;
+ 

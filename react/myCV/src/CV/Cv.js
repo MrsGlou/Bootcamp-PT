@@ -6,7 +6,7 @@ export const CV = {
     email: "andrea.pewa@gmail.com",
     birthDate: "07/02/1997",
     phone: "(+12) 767333841",
-    image: "../assets/foto-cv.jpeg",
+    image: "https://media.licdn.com/dms/image/C4D03AQHRG45a04bdbA/profile-displayphoto-shrink_200_200/0/1603373709366?e=1680739200&v=beta&t=Kok8asEI8j0Lg6UOkD1Gm2e8XRqW_pGTXUdFswXLTmA",
     gitHub: "https://github.com/MrsGlou",
     aboutMe: [
       {
@@ -25,41 +25,36 @@ export const CV = {
   },
   education: [
     {
-      name: "Master in physics",
-      date: "1985",
-      where: "MIT",
+      name: "Social Education",
+      date: "2015-2019",
+      where: "UAH-CUCC",
     },
     {
-      name: "Aeronautical Engineering",
-      date: "1995",
-      where: "ATI Vaughn College",
-    },
-    {
-      name: "Weapons Engineer",
-      date: "1998",
-      where: "Firearm Collegue, Queens",
+      name: "Bootcamp-Web Development",
+      date: "2023",
+      where: "Neoland",
     },
   ],
   experience: [
     {
-      name: "Consultant",
-      date: "01/01/2013 – Nowadays",
-      where: "S.H.I.E.L.D",
+      name: "Technical Support",
+      date: "15/05/2022 – Nowadays",
+      where: "Ezzing Solar",
       description:
-        "It builds the helicarriers used by S.H.I.E.L.D. It produces the Quinjets used by the Avengers.",
+        "Technical Support for Solar360",
     },
     {
-      name: "CEO",
-      date: "01/01/2000 – 28/02/2012",
-      where: "Stark Industries",
+      name: "S.A.E",
+      date: "04/11/2019 – 15/05/2022",
+      where: "Ezzing Solar",
       description:
-        "Manage the company, which is a multi-billion dollar multinational corporation that develops and manufactures advanced weapon and defense technologies. The company manufactures the armor worn by Iron Man and War Machine.",
+        "Specialized customer service for the sale of photovoltaic panels",
     },
   ],
   languages: {
     language: "English",
-    wrlevel: "Native",
-    splevel: "Native",
+    wrlevel: "B1",
+    splevel: "B2",
   },
   habilities: [
     "Robotics",

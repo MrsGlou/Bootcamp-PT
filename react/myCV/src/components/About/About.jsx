@@ -1,8 +1,20 @@
 import React from 'react'
 
-function About() {
+const About = ({hero}) => {
+  const {aboutMe} = hero
   return (
-    <div>About</div>
+    <div>
+    <h3>About Me</h3>
+      <div className='aboutMe card'>
+      {aboutMe.map((item) => {
+        return (
+          <div key = {JSON.stringify(item)}>
+            <p>{item.info}</p>
+          </div>
+        )
+      })}
+      </div>
+    </div>
   )
 }
 

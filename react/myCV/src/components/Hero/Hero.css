@@ -3,12 +3,13 @@
     flex-direction: column;
     align-items: center;
   }
+
 .card {
     padding-left: 20px;
     padding-right: 20px;
     text-align: center;
     border-radius: 12px;
-    background-color: rgba(240, 248, 255, 0.241);
+    background-color: #685585;
   }
 img {
     width: 150px;
@@ -17,9 +18,24 @@ img {
   }
 h2 {
     color: black;
-    text-shadow: 2px 2px rgba(240, 248, 255, 0.241);
+    text-shadow: 2px 2px rgba(240, 248, 255, 0.153);
   }
 a {
-    color: #2268A1;
+    color: #D4CB66;
     text-decoration: none;
   }
+
+a:hover{
+  color: #C28B4C;
+}
+
+p{
+  color:#C28B4C
+}
+
+h3{
+  background-color: #697952;
+  border-radius: 10px;
+  color: black;
+  text-shadow: 2px 2px rgba(240, 248, 255, 0.153);
+}
