@@ -14,7 +14,7 @@ function More({ languages, habilities, volunteer }) {
         {habilities.map((item) => {
           return (
             <div key= {JSON.stringify(item)}>
-            <p>{item}</p>
+            <p>🔧{item}</p>
             </div>
           )
         })}
