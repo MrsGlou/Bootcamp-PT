@@ -3,7 +3,8 @@ import React, {useState, useEffect} from 'react'
 const Countdown = () => {
     const [time, setTime] = useState("");
     useEffect(() => {
-        let countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
+        //La fecha se puede cambiar
+        let countDownDate = new Date("Feb 28, 2024 10:30:00").getTime();
         let x = setInterval (() =>{
             let now = new Date().getTime();            
             let distance = countDownDate - now;
@@ -13,9 +14,14 @@ const Countdown = () => {
             let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             setTime(days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+
+            if (distance < 0) {
+                clearInterval(x)
+                setTime("COUNTDOWN FINISHED")
+            }
         }, 1000)
     }, []);
-    return <div className="countdown">{time}</div>;
+    return <div className="countdown">🗓️ {time}</div>;
 }
 
 export default Countdown;
