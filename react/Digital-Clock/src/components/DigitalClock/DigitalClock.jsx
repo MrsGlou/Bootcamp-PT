@@ -11,7 +11,7 @@ const DigitalClock = () => {
     }, []);
 
   return (
-    <div className='digital-clock'>{clockState}</div>
+    <div className='digital-clock'>🕐 {clockState}</div>
   )
 }
 
