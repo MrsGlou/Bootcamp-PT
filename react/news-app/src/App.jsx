@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import './App.css'
 import Nav from './components/Nav'
 
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <h1 className='tittle'> Noticias</h1>
       <Nav/>
-
+      <Outlet/>
     </div>
   )
 }

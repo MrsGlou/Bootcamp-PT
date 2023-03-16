@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../context/userContext";
@@ -11,10 +12,6 @@ function Home() {
     user && navigate("/news");
   }, [user]);
 
-  const handleLogin = (textInput) => {
-    login(textInput.current.value, fileInput.current.files[0]);
-  };
-
   return (
     <section className="loginContainer">
       {!localStorage.getItem("user") && (
@@ -24,7 +21,7 @@ function Home() {
             ultimas noticias
           </h3>
           <input type="text" ref={textInput} />
-          <button className="loginButton" onClick={handleLogin}>
+          <button className="loginButton" onClick={() => login(textInput.current.value)}>
             Registrar
           </button>
         </>
