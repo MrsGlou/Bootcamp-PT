@@ -21,7 +21,11 @@ function Home() {
             ultimas noticias
           </h3>
           <input type="text" ref={textInput} />
-          <button className="loginButton" onClick={() => login(textInput.current.value)}>
+          <button
+            className="loginButton"
+            onClick={() => login(textInput.current.value)}
+          >
+            {" "}
             Registrar
           </button>
         </>
