@@ -1,13 +1,13 @@
 import React from "react";
 import { useOutletContext } from "react-router-dom";
-import New from "../components/New";
+import Article from "../components/Article";
 
 function News() {
   const [requestNews] = useOutletContext();
 
   return (
     <main className="newsContainer">
-      <New data={requestNews} />
+      <Article data={requestNews} />
     </main>
   );
 }

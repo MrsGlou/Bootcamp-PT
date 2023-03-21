@@ -1,11 +1,12 @@
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #ED6B34;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -58,12 +59,12 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #fffde3;
+    background-color: #ED6B34;
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #1f78a0;
+    background-color: #9675BB;
   }
 }

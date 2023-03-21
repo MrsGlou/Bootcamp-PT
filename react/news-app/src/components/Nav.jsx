@@ -9,6 +9,7 @@ function Nav() {
     <section>
       {user && (
         <nav>
+            <h2 className="titleUser">{`  Hi ${user}`}</h2>
           <ul>
             <li>
               <NavLink to="/Fotovoltaica">Energía Fotovoltaica</NavLink>
@@ -30,7 +31,6 @@ function Nav() {
                   />
                 </NavLink>
               </button>
-          <h2 className="titleUser">{`  Hi ${user}`}</h2>
           </div>
         </nav>
       )}
