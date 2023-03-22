@@ -1,0 +1,33 @@
+.titleArticle {
+    font-size: 3rem;
+    color: black;
+  }
+  figure {
+    width: 30rem;
+    padding: 1rem;
+    box-shadow: rgba(255, 255, 255, 0.516) 0px 2px 8px 0px;
+    background-color:#9675BB;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    opacity: 0.9;
+    border-radius: 3.5rem;
+  }
+  
+  figure:hover {
+    box-shadow: rgba(255, 255, 255, 0.737) 0px 4px 10px 0px;
+    opacity: 1;
+  }
+  .imageFigure {
+    width: 90%;
+  }
+  .description {
+    padding: 2rem;
+    text-align: justify;
+    background-color: rgba(12, 14, 58, 0.612);
+    border-radius: 10px;
+  }
+
+  link{
+    text-decoration: none;
+  }

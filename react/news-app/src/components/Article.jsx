@@ -1,22 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Article.css"
 
 function Article({ data }) {
-    return (
-        <>
-              { // -----FORMA 2 (length): FORMA DE CONTROLAR EL RECARGAR LA PAGINA POR EL USUARIO---------
-    data.length != 0 && data.data.articles.map((article) => (
-        
-        <figure key={article.id}>
-          <h1>{article.title}</h1>
-          <img className="imageFigure" src={article.img} alt={article.title} />
-          <p className="description">{article.summary}</p>
-        </figure>
-      ))} 
-        
-        </>
-    )
-
+  return (
+    <>
+      {data.length != 0 &&
+        data.map((article) => (
+          <figure key={article.id}>
+            <Link to={`/news/${article.id}`}>
+            <h1 className="titleArticle">{article.title}</h1>
+            <img
+              className="imageFigure"
+              src={article.img}
+              alt={article.title}
+            />
+            <p className="description">{article.summary}</p>
+            </Link>
+          </figure>
+        ))}
+    </>
+  );
 }
 
 export default Article;
