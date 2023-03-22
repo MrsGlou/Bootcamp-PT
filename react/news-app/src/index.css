@@ -1,7 +1,7 @@
  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
-
+ @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 :root {
-  font-family: "Inter", sans-serif;
+  font-family: "Questrial", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

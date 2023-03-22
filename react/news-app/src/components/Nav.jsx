@@ -11,14 +11,17 @@ function Nav() {
         <nav>
             <h2 className="titleUser">{`  Hi ${user}`}</h2>
           <ul>
-            <li>
-              <NavLink to="/Fotovoltaica">Energía Fotovoltaica</NavLink>
+          <li>
+              <NavLink to="/news">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/Tecnología">Tecnología</NavLink>
+              <NavLink to="/fotovoltaica">Energía Fotovoltaica</NavLink>
             </li>
             <li>
-              <NavLink to="/Cine">Cine</NavLink>
+              <NavLink to="/tecnologia">Tecnología</NavLink>
+            </li>
+            <li>
+              <NavLink to="/cine">Cine</NavLink>
             </li>
           </ul>
           <div className="userContainer">
