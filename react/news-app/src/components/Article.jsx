@@ -1,25 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Article.css"
 
 function Article({ data }) {
   return (
-    <>
-      {data.length != 0 &&
-        data.map((article) => (
-          <figure key={article.id}>
-            <Link to={`/news/${article.id}`}>
-            <h1 className="titleArticle">{article.title}</h1>
-            <img
-              className="imageFigure"
-              src={article.img}
-              alt={article.title}
-            />
-            <p className="description">{article.summary}</p>
-            </Link>
-          </figure>
-        ))}
-    </>
+    <figure>
+        <h1 className="titleArticle">{data.title}</h1>
+        <h3>{data.author}-{data.published_date}</h3>
+        <img className="imageFigure" src={data.img} alt={data.title} />
+        <p className="description">{data.summary}{data.info}</p>
+        <Link to={data.link}><button>Noticia completa</button></Link>
+    </figure>
   );
 }
 

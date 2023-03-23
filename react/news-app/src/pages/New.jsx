@@ -1,15 +1,17 @@
 import React from "react";
 import { useOutletContext, useParams } from "react-router-dom";
+import Article from "../components/Article";
 
 function New() {
   const { id } = useParams();
   const [requestNews] = useOutletContext();
-  const filterData = requestNews.data?.filter((article) => article.id == id);
+  const filterData = requestNews.filter((article) => article.id == id);
 
   return (
     <>
-      <Article key={filterData[0]._id} data={filterData[0]} />
-    </>
+    {console.log("entro")}
+      <Article key={filterData[0].id} data={filterData[0]} />
+      </>
   );
 }
 

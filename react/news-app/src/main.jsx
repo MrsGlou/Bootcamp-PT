@@ -7,9 +7,12 @@ import "./index.css";
 import App from "./App";
 import Home from "./pages/Home";
 import News from "./pages/News";
-import New from "./pages/New";
+import Photovoltaic from "./pages/Photovoltaic";
 import Page404 from "./pages/Page404";
 import Protected from "./components/Protected";
+import New from "./pages/New";
+import Film from "./pages/Film";
+import Tecnology from "./pages/Tecnology";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -23,6 +26,30 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               element={
                 <Protected>
                   <News />
+                </Protected>
+              }
+            />
+            <Route
+              path="/fotovoltaica"
+              element={
+                <Protected>
+                  <Photovoltaic />
+                </Protected>
+              }
+            />
+            <Route
+              path="/cine"
+              element={
+                <Protected>
+                  <Film />
+                </Protected>
+              }
+            />
+            <Route
+              path="/tecnologia"
+              element={
+                <Protected>
+                  <Tecnology />
                 </Protected>
               }
             />
