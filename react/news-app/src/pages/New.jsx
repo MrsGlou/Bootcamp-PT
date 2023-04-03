@@ -9,9 +9,8 @@ function New() {
 
   return (
     <>
-    {console.log("entro")}
       <Article key={filterData[0].id} data={filterData[0]} />
-      </>
+    </>
   );
 }
 

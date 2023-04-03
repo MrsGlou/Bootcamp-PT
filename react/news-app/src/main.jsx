@@ -54,7 +54,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               }
             />
             <Route
-              paht="/news/:id"
+              path="/news/:id"
               element={
                 <Protected>
                   <New />

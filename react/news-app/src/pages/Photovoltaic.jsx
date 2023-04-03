@@ -4,11 +4,11 @@ import Articles from "../components/Articles";
 
 function Photovoltaic() {
   const [requestNews] = useOutletContext();
-  const data = requestNews.filter((article) => article.topic === "Energía Fotovoltaica");
-
-  return (
-      <Articles data={data} />
+  const data = requestNews.filter(
+    (article) => article.topic === "Energía Fotovoltaica"
   );
+
+  return <Articles data={data} />;
 }
 
 export default Photovoltaic;

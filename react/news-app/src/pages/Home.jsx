@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../context/userContext";
+import "./Home.css";
 
 function Home() {
   const { login, user } = useContext(userContext);
