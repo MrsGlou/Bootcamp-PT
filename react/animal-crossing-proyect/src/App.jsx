@@ -7,7 +7,9 @@ function App() {
   return (
     <Layout>
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </Layout>
   );

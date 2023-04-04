@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Recipes from './pages/Recipes';
 import Villagers from './pages/Villagers';
 import VillagerDetail from './pages/VillagerDetail';
+import Favorites from './pages/Favorites';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/favorite" element={<Favorites />} />
           <Route path="/villagers" element={<Villagers />} />
           <Route path="/villager/:id" element={<VillagerDetail />} />
           <Route path="/recipes" element={<Recipes />} />

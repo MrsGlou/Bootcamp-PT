@@ -1,20 +1,14 @@
-import axios from 'axios';
+import useAxios from '../hooks/useAxios';
 
-const options = {
-  method: 'GET',
-  url: 'https://wine-pair.p.rapidapi.com/winesuggest.php',
-  params: { query: 'Pasta Bolognese' },
-  headers: {
-    'X-RapidAPI-Key': '25b396dccfmsh7b4fb99805610a6p17dc34jsncc56d2e9498f',
-    'X-RapidAPI-Host': 'wine-pair.p.rapidapi.com',
-  },
+export const getWine = async (recipeName) => {
+  const options = {
+    method: 'GET',
+    url: 'https://wine-pair.p.rapidapi.com/winesuggest.php',
+    params: { query: recipeName },
+    headers: {
+      'X-RapidAPI-Key': import.meta.env.VITE_APP_API_KEY_WINE,
+      'X-RapidAPI-Host': 'wine-pair.p.rapidapi.com',
+    },
+  };
+  return await useAxios(options);
 };
-
-axios
-  .request(options)
-  .then(function (response) {
-    console.log(response.data);
-  })
-  .catch(function (error) {
-    console.error(error);
-  });
