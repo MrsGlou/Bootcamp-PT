@@ -16,12 +16,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Login />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/Villagers" element={<Villagers />} />
-          <Route path="/Villager/:id" element={<VillagerDetail />} />
-          <Route path="/Recipes" element={<Recipes />} />
+          <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/villagers" element={<Villagers />} />
+          <Route path="/villager/:id" element={<VillagerDetail />} />
+          <Route path="/recipes" element={<Recipes />} />
           <Route path="/*" element={<Page404 />} />
         </Route>
       </Routes>
