@@ -3,12 +3,7 @@ import useAxios from '../hooks/useAxios';
 export const getRecipes = async () => {
   const options = {
     method: 'GET',
-    url: 'https://animal-crossing-new-horizons2.p.rapidapi.com/api/v1/recipes',
-    params: { category: 'cooking' },
-    headers: {
-      'X-RapidAPI-Key': import.meta.env.VITE_APP_API_KEY_ACNH,
-      'X-RapidAPI-Host': 'animal-crossing-new-horizons2.p.rapidapi.com',
-    },
+    url: 'https://642d3e0f66a20ec9ce98270f.mockapi.io/api/v1/items',
   };
   return await useAxios(options);
 };

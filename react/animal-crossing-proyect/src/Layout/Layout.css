@@ -1,5 +1,5 @@
 .main-layout{
     display: grid;
     grid-template-rows:
-    14vh 1fr 10vh ;
+    20vh 1fr 10vh ;
 }

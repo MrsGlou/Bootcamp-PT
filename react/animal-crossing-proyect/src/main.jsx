@@ -11,9 +11,11 @@ import Recipes from './pages/Recipes';
 import Villagers from './pages/Villagers';
 import VillagerDetail from './pages/VillagerDetail';
 import Favorites from './pages/Favorites';
+import { ThemeContextProvider } from './context/themeContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <ThemeContextProvider>
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<App />}>
@@ -28,5 +30,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Route>
       </Routes>
     </BrowserRouter>
+    </ThemeContextProvider>
   </React.StrictMode>,
 );
