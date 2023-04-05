@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../context/themeContext';
 import './Header.css';
 import Nav from './Nav';
 
 const Header = () => {
+  const {theme, toggleTheme}= useContext(ThemeContext)
+
   return (
     <div className="header-layout">
       <img
@@ -10,7 +13,7 @@ const Header = () => {
         src="../../public/Animal_Crossing_Logo.png"
         alt="logo"
       />
-      <button className="theme-button">Boton</button>
+      <button className="theme-button"onClick={toggleTheme}>{theme === 'dark' ? '🧡' : '🌚'}</button>
       <Nav />
     </div>
   );
