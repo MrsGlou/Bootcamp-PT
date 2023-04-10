@@ -4,7 +4,7 @@
 }
 
 .header-img {
-  display: flex;
+  justify-self: center;
 }
 
 .theme-button {

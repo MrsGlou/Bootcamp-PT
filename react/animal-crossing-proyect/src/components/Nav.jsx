@@ -23,15 +23,9 @@ const Nav = () => {
           </li>
           <li>
             {' '}
-            <button className="logout">
-              <NavLink to="/" onClick={() => logout()} className="logout">
-                <img
-                  className="iconLogout"
-                  src="https://res.cloudinary.com/dq186ej4c/image/upload/v1678462138/logout_FILL0_wght400_GRAD0_opsz48_dpfnju.png"
-                  alt=""
-                />
-              </NavLink>
-            </button>
+            <NavLink to="/login" onClick={() => logout()} className="logout">
+              Cerrar Sesion
+            </NavLink>
           </li>
         </ul>
       </nav>

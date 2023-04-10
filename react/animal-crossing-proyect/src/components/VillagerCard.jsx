@@ -1,10 +1,15 @@
 import React from 'react';
 
 const VillagerCard = ({ data }) => {
-  const villager = Object.values(data);
+  console.log(data);
   return (
-    <figure>
-      <h1>{villager.name['name-EUes']}</h1>
+    <figure className="villagerCard">
+      <h1>{data.name['name-EUes']}</h1>
+      <h3>{data.birthday}</h3>
+      <h3>{data.personality}</h3>
+      <h3>{data.species}</h3>
+      <h3>{data.saying}</h3>
+      <img src={data.icon_uri} alt={data.name['name-EUes']} />
     </figure>
   );
 };

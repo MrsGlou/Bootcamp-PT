@@ -1,3 +1,4 @@
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -55,7 +56,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 }
               />
               <Route
-                path="/villager/:id"
+                path="/villagers/:id"
                 element={
                   <Protected>
                     <VillagerDetail />
@@ -70,7 +71,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                   </Protected>
                 }
               />
-              <Route path="/*" element={<Page404 />} />
+              <Route
+                path="/*"
+                element={
+                  <Protected>
+                    <Page404 />
+                  </Protected>
+                }
+              />
             </Route>
           </Routes>
         </ContextProvider>

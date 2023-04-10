@@ -1,6 +1,6 @@
 .main-layout {
   display: grid;
-  grid-template-rows: 20vh 1fr 10vh;
+  grid-template-rows: 15vh 5vh 1fr 10vh;
 }
 
 .color-dark,
