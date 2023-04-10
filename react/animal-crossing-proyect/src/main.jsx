@@ -1,4 +1,3 @@
-import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -21,14 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <BrowserRouter basename="/">
         <ContextProvider>
           <Routes>
-            <Route
-              path="/"
-              element={
-                <Protected>
-                  <App />
-                </Protected>
-              }
-            >
+            <Route path="/" element={<App />}>
               <Route
                 index
                 element={

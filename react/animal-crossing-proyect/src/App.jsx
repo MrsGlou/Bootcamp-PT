@@ -5,6 +5,8 @@ import Footer from './components/Footer';
 import getVillagers from './services/villagers';
 import getRecipes from './services/recipes';
 
+import './index.css';
+
 function App() {
   const requestVillagers = getVillagers();
   const requestRecipes = getRecipes();

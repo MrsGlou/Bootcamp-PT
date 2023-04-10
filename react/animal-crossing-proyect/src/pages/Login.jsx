@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { userContext } from '../context/userContext';
 
+import './Login.css';
+
 const Login = () => {
   const { handleSubmit, register } = useForm();
 
@@ -12,7 +14,7 @@ const Login = () => {
   const { login } = useContext(userContext);
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)}>
+    <form className="userForm" onSubmit={handleSubmit(onFormSubmit)}>
       <label htmlFor="username">
         <span>Username:</span>
         <input

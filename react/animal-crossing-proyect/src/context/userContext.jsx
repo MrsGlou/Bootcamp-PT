@@ -5,7 +5,7 @@ export const userContext = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
-    const ID = localStorage.getItem('user');
+    const ID = localStorage.getItem('token');
     return ID ? ID : null;
   });
 
@@ -20,7 +20,9 @@ export const ContextProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     setUser(null);
+    navigate('/login');
   };
 
   const initialState = {
