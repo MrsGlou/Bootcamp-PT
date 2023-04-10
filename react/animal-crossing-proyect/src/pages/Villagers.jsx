@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { getVillagers } from '../services/villagers';
+import React from 'react';
+import { useOutletContext } from 'react-router-dom';
+
 import VillagersGrid from '../components/VillagersGrid';
 
 const Villagers = () => {
-  const [villagers, setVillagers] = useState([]);
-  useEffect(() => {
-    (async () => {
-      setVillagers(await getVillagers());
-    })();
-  }, []);
+  const [requestVillagers] = useOutletContext();
+
   return (
     <div>
-      <VillagersGrid data={villagers} />
+      <VillagersGrid data={requestVillagers} />
     </div>
   );
 };

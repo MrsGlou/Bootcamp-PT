@@ -11,14 +11,26 @@ export const ContextProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const login = (user) => {
+  const login = (user, token) => {
     localStorage.setItem('user', user);
+    localStorage.setItem('token', token);
     setUser(user);
-    navigate('/news');
+    navigate('/');
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setUser(null);
+  };
+
+  const initialState = {
+    token: null,
+    user: '',
+    favourites: [],
   };
 
   return (
-    <userContext.Provider value={{ user, login, setUser }}>
+    <userContext.Provider value={{ initialState, user, login, setUser, logout }}>
       {children}
     </userContext.Provider>
   );

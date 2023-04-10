@@ -5,5 +5,8 @@
 
 .header-img {
   display: flex;
-  align-items: flex-end;
+}
+
+.theme-button {
+  align-self: center;
 }

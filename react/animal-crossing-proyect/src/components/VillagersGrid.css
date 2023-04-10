@@ -1,0 +1,23 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 1rem;
+  margin: 2rem;
+  align-content: center;
+  justify-content: center;
+}
+
+.villagerContainer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffffa;
+  border-radius: 35%;
+}
+.imageFigure {
+  display: flex;
+  align-items: center;
+}

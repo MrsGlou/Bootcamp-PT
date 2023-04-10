@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import RecipesGrid from '../components/RecipesGrid';
-import { getRecipes } from '../services/recipes';
+import React from 'react';
+import { useOutletContext } from 'react-router-dom';
+
+import RecipesGrid from '../components/RecipesGrid.jsx';
 
 const Recipes = () => {
-  const [recipes, setRecipes] = useState([]);
-  useEffect(() => {
-    (async () => {
-      setRecipes(await getRecipes());
-    })();
-  }, []);
+  const [requestRecipes] = useOutletContext();
   return (
     <div>
-      <RecipesGrid data={recipes} />
+      <RecipesGrid data={requestRecipes} />
     </div>
   );
 };

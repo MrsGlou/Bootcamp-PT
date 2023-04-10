@@ -1,4 +1,10 @@
-.navbar {
+.navbar ul {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+.navbar {
+  max-height: 10vh;
 }

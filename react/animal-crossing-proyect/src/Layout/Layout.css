@@ -1,5 +1,28 @@
-.main-layout{
-    display: grid;
-    grid-template-rows:
-    20vh 1fr 10vh ;
+.main-layout {
+  display: grid;
+  grid-template-rows: 20vh 5vh 1fr 10vh;
+}
+
+.color-dark,
+.color-light {
+  height: 100vh;
+}
+
+.color-dark {
+  background-color: #9dffb0;
+  color: #c48d3f;
+}
+
+.color-light {
+  background-color: #8a84ce;
+  color: #ff9391;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: #81f1f7;
 }

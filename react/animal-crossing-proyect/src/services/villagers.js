@@ -1,18 +1,21 @@
+import { useEffect, useState } from 'react';
 import useAxios from '../hooks/useAxios';
 
-export const getVillagers = async () => {
+const getVillagers = () => {
+  const [data, setData] = useState([]);
   const options = {
     method: 'GET',
     url: 'https://acnhapi.com/v1/villagers/',
   };
-  return await useAxios(options);
+  const getData = async () => {
+    const data = await useAxios(options);
+    setData(data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+  return data;
 };
 
-export const getVillager = async ( villagerID) => {
-  const options = {
-    method: 'GET',
-    url: 'https://acnhapi.com/v1/villagers/',
-    params: { unique_entry_id: villagerID ?? '' },
-  };
-  return await useAxios(options);
-};
+export default getVillagers;

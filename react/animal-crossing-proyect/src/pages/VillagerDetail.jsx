@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useOutletContext, useParams } from 'react-router-dom';
 import VillagerCard from '../components/VillagerCard';
-import { getVillager } from '../services/villagers';
 
 const VillagerDetail = () => {
-  const { id } = useParams()
-  const [villager, setVillager] = useState([]);
-  useEffect(() => {
-    (async () => {
-      setVillager(await getVillager(id));
-    })();
-  }, []);
+  const { id } = useParams();
+  const [requestVillagers] = useOutletContext();
+  const filterData = requestVillagers.filter((villager) => villager.id === id);
   return (
     <div>
-      <VillagerCard data={villager} />
+      <VillagerCard key={filterData[0].id} data={filterData[0]} />
     </div>
   );
 };
