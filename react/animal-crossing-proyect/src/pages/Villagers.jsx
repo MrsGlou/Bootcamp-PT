@@ -3,11 +3,12 @@ import { useOutletContext } from 'react-router-dom';
 import { Pagination } from 'react-bootstrap';
 
 import VillagersGrid from '../components/VillagersGrid';
+import './Villagers.css';
 
 const Villagers = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [requestVillagers] = useOutletContext();
+  const [requestRecipes, requestVillagers] = useOutletContext();
   const villagers = Object.values(requestVillagers);
   const itemsPerPage = 20;
 
@@ -36,7 +37,7 @@ const Villagers = () => {
   return (
     <div>
       <VillagersGrid data={currentVillagers} />
-      <Pagination>{pageItems}</Pagination>
+      <Pagination className="paginationVillagers">{pageItems}</Pagination>
     </div>
   );
 };

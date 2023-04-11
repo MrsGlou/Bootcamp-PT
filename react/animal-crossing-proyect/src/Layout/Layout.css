@@ -5,7 +5,7 @@
 
 .color-dark,
 .color-light {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .color-dark {

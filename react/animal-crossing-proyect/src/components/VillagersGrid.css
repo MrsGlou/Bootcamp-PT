@@ -17,7 +17,7 @@
   justify-content: center;
   align-items: center;
   background-color: #fffffa;
-  border-radius: 15%;
+  border-radius: 2rem;
 }
 .imageFigure {
   display: flex;

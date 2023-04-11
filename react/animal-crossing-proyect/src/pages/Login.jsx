@@ -25,7 +25,7 @@ const Login = () => {
         />
       </label>
 
-      <label htmlFor="password">
+      <label htmlFor="token">
         <span>Departure from:</span>
         <input
           {...register('token', { required: true, minLength: 4 })}

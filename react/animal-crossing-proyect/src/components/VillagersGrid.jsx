@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './VillagersGrid.css';
 
-const VillagersGrid = ({ villagers }) => {
+const VillagersGrid = ({ data }) => {
+  const villagers = Object.values(data);
   const handleLike = (e) => {
     console.log(e.target.id);
   };

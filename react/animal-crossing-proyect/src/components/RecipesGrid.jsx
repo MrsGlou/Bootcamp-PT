@@ -6,7 +6,7 @@ const RecipesGrid = ({ data }) => {
     <>
       {recipes.map((recipe) => (
         <figure key={recipe.id}>
-          <h1>{recipe.name}</h1>
+          {/*<h1>{recipe.name}</h1>*/}
           <img className="imageFigure" src={recipe.img} alt={recipe.name} />
           <p className="description">{recipe.sell_price}</p>
           <button></button>

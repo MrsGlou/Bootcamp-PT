@@ -1,7 +1,24 @@
 .userForm {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2rem;
   min-height: 50vh;
+  font-size: 3vh;
+  margin-top: 5rem;
+}
+
+input {
+  margin: 2rem;
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2.5px solid #ff9391;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
 }

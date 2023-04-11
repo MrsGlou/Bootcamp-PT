@@ -12,7 +12,7 @@ function App() {
     <Layout>
       <Header />
       <main>
-        <Outlet context={([requestRecipes], [requestVillagers])} />
+        <Outlet context={[requestRecipes, requestVillagers]} />
       </main>
       <Footer />
     </Layout>
