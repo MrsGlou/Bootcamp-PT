@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './VillagersGrid.css';
+import { favoriteContext } from '../context/FavoriteContext';
 
 const VillagersGrid = ({ data }) => {
+  const { favorites, setFavorites } = useContext(favoriteContext);
   const villagers = Object.values(data);
   const handleLike = (e) => {
-    console.log(e.target.id);
+    const id = e.target.value;
+    const villager = villagers.find((villager) => villager.id === id);
+    setFavorites([...favorites, villager]);
   };
+
   return (
     <div className="gridContainer">
       {villagers.map((villager) => (

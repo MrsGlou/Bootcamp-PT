@@ -5,7 +5,7 @@ import { userContext } from '../context/userContext';
 
 const Nav = () => {
   const { logout } = useContext(userContext);
-  if (localStorage.getItem('token')) {
+  if (localStorage.getItem('user')) {
     return (
       <nav className="navbar">
         <ul>

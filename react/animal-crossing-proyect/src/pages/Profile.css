@@ -1,0 +1,120 @@
+.ticket {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+}
+.frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+  max-width: 1300px;
+}
+
+/* Ticket top */
+
+.ticket-top {
+  width: 100%;
+  padding: 29px 50px 19px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #45e3bf;
+  border-top-left-radius: 5em;
+  border-top-right-radius: 5em;
+  color: #fbfcf6;
+  font-weight: 600;
+}
+
+/* Ticket middle */
+
+.ticket-middle {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  padding: 30px 50px;
+  background-color: #fff9e5;
+}
+
+.bg-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.2;
+  background: url(https://i.redd.it/y5mzeig307b41.png);
+  background-size: cover;
+}
+.oneliner {
+  display: flex;
+}
+
+.counter {
+  display: none;
+  margin-top: 2px;
+  margin-left: 15px;
+  font-size: 14px;
+  align-items: bottom;
+}
+
+.show {
+  display: flex;
+}
+
+.column-small {
+  margin-top: 25px;
+  margin-left: 5px;
+  z-index: 1;
+}
+
+.divider {
+  padding: 10px;
+  grid-column-start: span 4;
+  border-bottom: 2px dashed #404040;
+}
+
+.category {
+  display: inline-block;
+  margin-bottom: 3px;
+  margin-left: -5px;
+  padding: 2px 8px;
+  border-radius: 5em;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #f8eebc;
+}
+
+/* Ticket bottom */
+
+.ticket-bottom {
+  width: 100%;
+  padding: 10px 50px;
+  border-bottom-left-radius: 5em;
+  border-bottom-right-radius: 5em;
+  background-color: #5cbff7;
+}
+
+.logo {
+  width: 100%;
+}
+
+.logo img {
+  width: 160px;
+}
+
+/* Styling Utils */
+
+.hidden {
+  display: none;
+}
+
+@media all and (max-width: 460px) {
+  .logo {
+    display: flex;
+    justify-content: center;
+  }
+}

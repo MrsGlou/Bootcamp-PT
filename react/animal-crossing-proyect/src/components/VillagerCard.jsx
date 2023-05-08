@@ -1,7 +1,7 @@
 import React from 'react';
+import './VillagerCard.css';
 
 const VillagerCard = ({ data }) => {
-  console.log(data);
   return (
     <figure className="villagerCard">
       <h1>{data.name['name-EUes']}</h1>

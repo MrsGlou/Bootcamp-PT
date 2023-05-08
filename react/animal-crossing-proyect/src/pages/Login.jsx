@@ -8,7 +8,12 @@ const Login = () => {
   const { handleSubmit, register } = useForm();
 
   const onFormSubmit = (values) => {
-    login(values.user, values.token);
+    login(values.user);
+    const person = { user: values.user, from: values.place, token: true, favorites: [] };
+    localStorage.setItem('currentUser', values.user);
+    localStorage.setItem(`${values.user}`, JSON.stringify(person));
+    localStorage.setItem('user', values.user);
+    localStorage.setItem('from', values.place);
   };
 
   const { login } = useContext(userContext);
@@ -25,12 +30,12 @@ const Login = () => {
         />
       </label>
 
-      <label htmlFor="token">
+      <label htmlFor="from">
         <span>Departure from:</span>
         <input
-          {...register('token', { required: true, minLength: 4 })}
-          id="token"
-          name="token"
+          {...register('from', { required: true, minLength: 4 })}
+          id="from"
+          name="from"
           type="text"
         />
       </label>

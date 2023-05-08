@@ -8,6 +8,7 @@
   padding: 1rem;
   align-content: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .villagerContainer {
@@ -19,6 +20,7 @@
   background-color: #fffffa;
   border-radius: 2rem;
 }
+
 .imageFigure {
   display: flex;
   align-items: center;

@@ -1,0 +1,26 @@
+.gridContainter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem;
+  padding: 1rem;
+  align-content: center;
+  justify-content: center;
+}
+
+.recipeContainer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffffa;
+  border-radius: 2rem;
+}
+
+.imageFigure {
+  display: flex;
+  align-items: center;
+}

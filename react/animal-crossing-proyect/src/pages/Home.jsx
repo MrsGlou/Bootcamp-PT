@@ -2,12 +2,14 @@ import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import VillagersGrid from '../components/VillagersGrid';
 import './Home.css';
+import RecipesGrid from '../components/RecipesGrid';
 
 const Home = () => {
-  const [requestVillagers] = useOutletContext();
+  const [requestRecipes, requestVillagers] = useOutletContext();
   const villagers = Object.values(requestVillagers);
+  const recipes = Object.values(requestRecipes);
 
-  const randomVillagers = (villagers) => {
+  const randomItem = (villagers) => {
     const result = [...villagers];
     const randomElements = [];
 
@@ -18,15 +20,25 @@ const Home = () => {
     }
     return randomElements;
   };
-  const randomElements = randomVillagers(villagers);
+
+  const randomVillagers = randomItem(villagers);
+  const randomRecipes = randomItem(recipes);
 
   return (
-    <div className="homeVillagers">
-      <VillagersGrid data={randomElements} />
-      <button className="btn-ViewAll">
-        <Link to="/villagers">VER TODOS</Link>
-      </button>
-    </div>
+    <>
+      <div className="homeVillagers">
+        <VillagersGrid data={randomVillagers} />
+        <button className="btn-ViewAll">
+          <Link to="/villagers">VER TODOS</Link>
+        </button>
+      </div>
+      <div className="homeVillagers">
+        <RecipesGrid data={randomRecipes} />
+        <button className="btn-ViewAll">
+          <Link to="/recipes">VER TODOS</Link>
+        </button>
+      </div>
+    </>
   );
 };
 

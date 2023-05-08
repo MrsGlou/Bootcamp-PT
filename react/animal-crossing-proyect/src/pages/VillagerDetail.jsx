@@ -4,7 +4,7 @@ import VillagerCard from '../components/VillagerCard';
 
 const VillagerDetail = () => {
   const { id } = useParams();
-  const [requestVillagers] = useOutletContext();
+  const [requestRecipes, requestVillagers] = useOutletContext();
   const villagers = Object.values(requestVillagers);
   const filterData = villagers.filter((villager) => villager.id == id);
   return (

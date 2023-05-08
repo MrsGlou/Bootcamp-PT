@@ -1,0 +1,8 @@
+.villagerCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+  background-image: '../../public/NSwitch_AnimalCrossingNewHorizons_bg_leaves_lightgreen.jpg';
+}

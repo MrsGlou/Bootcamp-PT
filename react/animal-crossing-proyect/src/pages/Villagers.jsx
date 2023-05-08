@@ -10,7 +10,7 @@ const Villagers = () => {
 
   const [requestRecipes, requestVillagers] = useOutletContext();
   const villagers = Object.values(requestVillagers);
-  const itemsPerPage = 20;
+  const itemsPerPage = 35;
 
   const totalPages = Math.ceil(villagers.length / itemsPerPage);
   const lastIndex = currentPage * itemsPerPage;
