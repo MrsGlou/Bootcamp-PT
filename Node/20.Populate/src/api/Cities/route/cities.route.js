@@ -114,19 +114,27 @@ router.patch("/:id", async (req, res, next) => {
 });
 
 //----------------------- DELETE -----------------//
-router.delete("/:id", async () => {
+router.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const deleteCity = await Cities.findByIdAndDelete(id);
     if (deleteCity) {
       //Tenemos que actualizar el Country para borrar esa city de el, para ello buscamos la city borrada
-      await Country.updateMany({ $pull: { events: id } });
+      await Country.updateMany({ cities: id },{ $pull: { cities: id } });
 
-      return res.status(200).json(deleteCity);
+      return res.status(200).json({
+        finally: "OK delete city",
+        deleteCity: deleteCity,
+        test: 
+        await Cities.findById(id)=== null ? "OK borrado" : "Error delete city",
+      });
     } else {
+      return res.status(404).json("Error in first step")
     }
   } catch (error) {
     return next(error);
   }
 });
+
+
 module.exports = router;
