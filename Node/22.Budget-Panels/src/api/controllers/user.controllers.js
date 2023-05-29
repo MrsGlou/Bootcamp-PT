@@ -3,14 +3,11 @@ const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const setError = require('../../helpers/handle-error');
-const { deleteImgCloudinary } = require('../../middlewares/files.middleware');
 dotenv.config();
 
 //----------- REGISTER --------------//
 
 const register = async (req, res, next) => {
-  let catchImg = req.file?.path;
-
   try {
     await User.syncIndexes();
     //Se connfigura nodemailer para enviar el codigo de confirmación al usuario.
@@ -45,7 +42,6 @@ const register = async (req, res, next) => {
     });
 
     if (userExists) {
-      deleteImgCloudinary(catchImg);
       //llamamos al manejador de errores para que haga la ejecución
       return next(setError(409, 'This user already exist'));
     } else {
@@ -75,10 +71,7 @@ const register = async (req, res, next) => {
       });
     }
   } catch (error) {
-    deleteImgCloudinary(catchImg);
-    return next(
-      setError(error.code || 500, error.message || 'failed create user')
-    );
+    return next(setError(500, error.message || 'failed create user'));
   }
 };
 
