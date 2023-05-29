@@ -1,11 +1,11 @@
 const multer = require('multer');
 const cloudinary = require('cloudinary');
-const { cloudinaryStorage } = require('multer-storage-cloudinary');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const dotenv = require('dotenv');
 dotenv.config();
 
 //creamos almacen para las fotos de ususarios
-const storage = new cloudinaryStorage({
+const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   //Le decimos que vamos a crear una carpeta para meter toda esa documentación y el formato permitido de archivo
   params: {

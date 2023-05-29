@@ -21,15 +21,16 @@ const UserSchema = new Schema(
     rol: { type: String, enum: ['admin', 'basic'], required: true },
     image: { type: String },
     confirmationCode: { type: Number, required: true },
-    validated: { type: Boolean, required: true },
+    validated: { type: Boolean, default: false },
     offers: { type: mongoose.Schema.Types.ObjectId, ref: 'Offer' },
   },
   {
     timestamps: true,
   }
 );
+
 //Hacemos un presave encriptando la contraseña
-userSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function (next) {
   try {
     //nivel de encriptación no mas de 10
     this.password = await bcrypt.hash(this.password, 10);
