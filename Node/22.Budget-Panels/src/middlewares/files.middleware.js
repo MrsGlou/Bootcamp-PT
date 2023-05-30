@@ -10,7 +10,7 @@ const storage = new CloudinaryStorage({
   //Le decimos que vamos a crear una carpeta para meter toda esa documentación y el formato permitido de archivo
   params: {
     folder: 'userAuthDB',
-    allowedFormats: ['jpg', 'png', 'jpeg', 'git', 'webp'],
+    allowedFormats: ['jpg', 'png', 'jpeg', 'gif', 'webp'],
   },
 });
 
