@@ -136,4 +136,5 @@ const validatedNewUser = async (req, res, next) => {
 
 module.exports = {
   register,
+  validatedNewUser,
 };
