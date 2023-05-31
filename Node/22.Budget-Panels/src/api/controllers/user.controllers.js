@@ -1,12 +1,13 @@
 const User = require('../models/user.model');
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const setError = require('../../helpers/handle-error');
 const { deleteImgCloudinary } = require('../../middlewares/files.middleware');
+const { generateToken } = require('../../utils/getToken');
 dotenv.config();
 
-//----------- REGISTER --------------//
+//------------------ REGISTER -----------------//
 
 const register = async (req, res, next) => {
   let catchImg = req.file?.path;
@@ -88,67 +89,121 @@ const register = async (req, res, next) => {
 
 const validatedNewUser = async (req, res, next) => {
   try {
-    const emailSMTP = process.env.EMAIL;
-    const password = process.env.PASSWORD;
     const { email, confirmationCode } = req.body;
     const userExists = await User.findOne({ email });
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: emailSMTP,
-        pass: password,
-      },
-    });
+
     if (!userExists) {
       return res.status(404).json('User not found');
     } else {
       if (confirmationCode === userExists.confirmationCode) {
         //Buscamos el usuario y vemos que se ha actualizado correctamente
         try {
-          await userExists.updateOne({ check: true });
-          // hacemos un testeo de que este user se ha actualizado correctamente, hacemos un findOne
+          await userExists.updateOne({ validated: true });
+          //Miramos que se ha acutalizado correctamente
           const updateUser = await User.findOne({ email });
 
           // este finOne nos sirve para hacer un ternario que nos diga si la propiedad vale true o false
           return res.status(200).json({
-            testCheckOk: updateUser.check == true ? true : false,
+            testValidatedOk: !!updateUser.validated,
           });
         } catch (error) {
           return res.status(404).json(error.message);
         }
       } else {
-        //Si el correo esta mal volvemos a enviarlo 
-        const updateUser = await User.findOne({ email });
-        const mailOptions = {
-          from: emailSMTP,
-          to: req.body.email,
-          subject: 'Code confirmation',
-          text: `Your code is ${confirmationCode}`,
-        };
-
-        transporter.sendMail(mailOptions, (error, info) => {
-          if (error) {
-            console.log(error);
-          } else {
-            console.log('Email sent: ' + info.response);
-          }
-        });
-
-        return res.status(201).json({
-          user: updateUser,
-          confirmationCode: confirmationCode,
+        await User.findByIdAndDelete(userExists._id);
+        // borramos la imagen
+        deleteImgCloudinary(userExists.image);
+        // devolvemos un 200 con el test de ver si el delete se ha hecho correctamente
+        return res.status(200).json({
+          userExists,
+          check: false,
+          delete: (await User.findById(userExists._id))
+            ? 'error delete user'
+            : 'ok delete user',
         });
       }
-      //Tenemos que mirar si el codigo esta bien y validamos el usuario
     }
   } catch (error) {
     return next(setError(500, 'General error validated'));
   }
 };
 
-//----------- RESEND CODE CONIRMATION --------------//
+//--------- RESEND CODE CONFIRMATION ------------//
+const resendCode = async (req, res, next) => {
+  try {
+    //Configuramos nodemailer
+    const email = process.env.EMAIL;
+    const password = process.env.PASSWORD;
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: email,
+        pass: password,
+      },
+    });
+    const userExists = await User.findOne({ email: req.body.email });
+
+    if (userExists) {
+      const mailOptions = {
+        from: email,
+        to: req.body.email,
+        subject: 'Code confirmation',
+        text: `Your code is ${userExists.confirmationCode}`,
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+          return res.status(200).json({ resend: true });
+        }
+      });
+    } else {
+      return res.status(404).json('User not found');
+    }
+  } catch (error) {
+    return next(setError(500, error.message || 'General error resend code'));
+  }
+};
+
+//------------------- LOGIN --------------------//
+const login = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    //Si no hay usuario -> 404- User not found
+    if (!user) {
+      return res.status(404).json('User no found');
+    } else {
+      //Si hay usuario miramos que las contraseñas sean las mismas
+      if (bcrypt.compareSync(password, user.password)) {
+        //Si son correctas generamos token
+        const token = generateToken(user._id, email);
+
+        // devolvemos el user auth y el token
+        return res.status(200).json({
+          user: {
+            email,
+            _id: user._id,
+          },
+          token,
+        });
+      } else {
+        // si la contraseña no esta correcta enviamos un 404 con el invalid password
+        return res.status(404).json('invalid password');
+      }
+    }
+  } catch (error) {
+    return next(
+      setError(500 || error.code, error.message || 'General error login')
+    );
+  }
+};
 
 module.exports = {
   register,
   validatedNewUser,
+  resendCode,
+  login,
 };
