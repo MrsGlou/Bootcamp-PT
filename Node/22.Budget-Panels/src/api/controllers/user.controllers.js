@@ -48,30 +48,33 @@ const register = async (req, res, next) => {
       //llamamos al manejador de errores para que haga la ejecución
       return next(setError(409, 'This user already exist'));
     } else {
-      const createUser = await newUser.save();
-      //para que no se muetre la contraseña que ha puesto el usuario lo ponemos en null
-      createUser.password = null;
+      try {
+        const createUser = await newUser.save();
+        createUser.password = null;
 
-      //Enviamos codigo de verificación
-      const mailOptions = {
-        from: email,
-        to: req.body.email,
-        subject: 'Code confirmation',
-        text: `Your code is ${confirmationCode}`,
-      };
+        //!! --------VAMOS A ENVIAR EL CORREO .------
+        const mailOptions = {
+          from: email,
+          to: req.body.email,
+          subject: 'Code confirmation',
+          text: `Your code is ${confirmationCode}`,
+        };
 
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.log('Tengo un error ' + error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
 
-      return res.status(201).json({
-        user: createUser,
-        confirmationCode: confirmationCode,
-      });
+        return res.status(201).json({
+          user: createUser,
+          confirmationCode: confirmationCode,
+        });
+      } catch (error) {
+        return res.status(404).json(error.message);
+      }
     }
   } catch (error) {
     if (req.file) deleteImgCloudinary(catchImg);
@@ -101,11 +104,20 @@ const validatedNewUser = async (req, res, next) => {
     } else {
       if (confirmationCode === userExists.confirmationCode) {
         //Buscamos el usuario y vemos que se ha actualizado correctamente
-        const updateUser = await User.findOne({ email });
-        return res.status(200).json({
-          testValidatedOK: updateUser.validated == true ? true : false,
-        });
+        try {
+          await userExists.updateOne({ check: true });
+          // hacemos un testeo de que este user se ha actualizado correctamente, hacemos un findOne
+          const updateUser = await User.findOne({ email });
+
+          // este finOne nos sirve para hacer un ternario que nos diga si la propiedad vale true o false
+          return res.status(200).json({
+            testCheckOk: updateUser.check == true ? true : false,
+          });
+        } catch (error) {
+          return res.status(404).json(error.message);
+        }
       } else {
+        //Si el correo esta mal volvemos a enviarlo 
         const updateUser = await User.findOne({ email });
         const mailOptions = {
           from: emailSMTP,
@@ -133,6 +145,8 @@ const validatedNewUser = async (req, res, next) => {
     return next(setError(500, 'General error validated'));
   }
 };
+
+//----------- RESEND CODE CONIRMATION --------------//
 
 module.exports = {
   register,
