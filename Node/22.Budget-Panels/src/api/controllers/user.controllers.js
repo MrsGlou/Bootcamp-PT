@@ -180,8 +180,7 @@ const login = async (req, res, next) => {
       if (bcrypt.compareSync(password, user.password)) {
         //Si son correctas generamos token
         const token = generateToken(user._id, email);
-
-        // devolvemos el user auth y el token
+        //Devolvemos el user auth y el token
         return res.status(200).json({
           user: {
             email,
@@ -191,7 +190,7 @@ const login = async (req, res, next) => {
         });
       } else {
         // si la contraseña no esta correcta enviamos un 404 con el invalid password
-        return res.status(404).json('invalid password');
+        return res.status(404).json('Invalid password');
       }
     }
   } catch (error) {
