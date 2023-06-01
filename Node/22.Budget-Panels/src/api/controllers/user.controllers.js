@@ -8,7 +8,6 @@ const { generateToken } = require('../../utils/getToken');
 dotenv.config();
 
 //------------------ REGISTER -----------------//
-
 const register = async (req, res, next) => {
   let catchImg = req.file?.path;
   try {
@@ -86,7 +85,6 @@ const register = async (req, res, next) => {
 };
 
 //----------- VALIDATED NEW USER --------------//
-
 const validatedNewUser = async (req, res, next) => {
   try {
     const { email, confirmationCode } = req.body;
@@ -200,9 +198,24 @@ const login = async (req, res, next) => {
   }
 };
 
+//---- CANGE PASSWORD WITHOUT BEEING LOGGED -----//
+const forgotPassword = (req, res, next) => {
+  try {
+    const { email } = req.body;
+  } catch (error) {
+    return next(
+      setError(
+        500 || error.code,
+        error.message || 'General error change password'
+      )
+    );
+  }
+};
+
 module.exports = {
   register,
   validatedNewUser,
   resendCode,
   login,
+  forgotPassword,
 };
