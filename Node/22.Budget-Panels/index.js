@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 //Decimos el tipo de servidor web que vamos a tener, estos dos parametros siempre son IGUAlES
 //Siempre va a utilizar un json en el middleware para enviar los datos
 app.use(express.json({ limit: '1mb' }));
-app.use(express.urlencoded({ limit: '1mb', extended: false }));
+app.use(express.urlencoded({ limit: '15mb', extended: false }));
 
 //--------RUTAS----------
 const UserRoutes = require('./src/api/routes/user.routes');
