@@ -40,8 +40,10 @@ app.use(express.urlencoded({ limit: '15mb', extended: false }));
 
 //--------RUTAS----------
 const UserRoutes = require('./src/api/routes/user.routes');
+const OfferRoutes = require('./src/api/routes/offer.routes');
 
 app.use('/api/v1/user', UserRoutes);
+app.use('/api/v1/offer', OfferRoutes);
 app.use(`*`, (req, res, next) => {
   const error = new Error(`Route not found`);
   error.status = 404;

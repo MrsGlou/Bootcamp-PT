@@ -11,23 +11,26 @@ const OfferSchema = new Schema(
       enum: ['coplanar', 'autolastrada', 'suelo', 'inclinada'],
       required: true,
     },
-    maintenance: { type: Boolean, default: true, required: true },
+    maintenance: { type: Boolean, default: true },
     installerPrice: { type: Number, required: true },
     IVA: { type: String, enum: ['10%', '21%'], required: true },
-    discount: { type: String, required: true },
+    discount: { type: Boolean, default: false },
     totalPrice: { type: Number, required: true },
     clientEmail: { type: String, required: true },
     panlesType: [
-      { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product' /*required: true*/,
+      },
     ],
-    inverterType: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Product',
-      required: true,
-    },
-    user: [
-      { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    inverterType: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product',
+        //required: true,
+      },
     ],
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   },
   {
     timestamps: true,

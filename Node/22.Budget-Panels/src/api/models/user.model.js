@@ -22,7 +22,7 @@ const UserSchema = new Schema(
     image: { type: String },
     confirmationCode: { type: Number, required: true },
     validated: { type: Boolean, default: false },
-    offers: { type: mongoose.Schema.Types.ObjectId, ref: 'Offer' },
+    offers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Offer' }],
   },
   {
     timestamps: true,
