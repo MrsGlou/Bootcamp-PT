@@ -24,11 +24,15 @@ const createOffer = async (req, res, next) => {
       req.body.panels * 148 +
       req.body.inverter * 500 +
       req.body.installerPrice +
-      (req.body.maintenance === true ? 0 : 140);
-    console.log(price);
+      (req.body.maintenance == 'true' ? 0 : 140);
+    console.log(price, typeof req.body.maintenance);
 
     //Instanciamos
-    const newOffer = new Offer({ ...req.body, user: req.user._id });
+    const newOffer = new Offer({
+      ...req.body,
+      user: req.user._id,
+      totalPrice: price,
+    });
     try {
       const postNewOffer = await newOffer.save();
 
@@ -47,7 +51,7 @@ const createOffer = async (req, res, next) => {
           from: email,
           to: req.body.clientEmail,
           subject: 'Panels Offer',
-          text: `Your offer price is ${req.body.totalPrice} and the number of panels are ${req.body.panels}`,
+          text: `Your offer price is ${price} and the number of panels are ${req.body.panels}`,
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -93,9 +97,27 @@ const getAllOffer = async (req, res, next) => {
 };
 
 //------------------ GET BY ID --------------------//
+const getOfferByID = async (req, res, next) => {
+  const { _id } = req.body;
+  try {
+    const offersAll = await Offer.find(_id);
+    if (offersAll) {
+      return res.status(200).json(offersAll);
+    } else {
+      return res.status(404).json('Failed get all offers');
+    }
+  } catch (error) {
+    return next(
+      setError(
+        500 || error.code,
+        error.message || 'General error get all offers'
+      )
+    );
+  }
+};
 
 //------------------ UPDATE OFFER --------------------//
-const update = async (req, res, next) => {
+const updateOffer = async (req, res, next) => {
   const { id } = req.params;
   try {
     //Actualizamos los indexes de los elementos unicos
@@ -104,15 +126,15 @@ const update = async (req, res, next) => {
     const patchOffer = new Offer(req.body);
     //Las cosas que no quiero que se modifiquen las cojo de la req
     patchOffer._id = id;
-    patchOffer.user = req.offer.user;
-
+    patchOffer.user = req.body.user;
+    console.log(patchOffer);
     //Buscamos el id y actualizamos.
     try {
       await Offer.findByIdAndUpdate(id, patchOffer);
 
       //----TEST RUNTIME ----//
       //Buscamos usuario actualizado y las keys en el body
-      const updateOffer = await Offer.findById(req.offer._id);
+      const updateOffer = await Offer.findById(id);
       const updateKeys = Object.keys(req.body);
       //Variable para guardar el login
       const testUpdate = [];
@@ -133,7 +155,7 @@ const update = async (req, res, next) => {
         testUpdate,
       });
     } catch (error) {
-      return res.status(404).json(error.message);
+      return res.status(404).json('Fallo en el update');
     }
   } catch (error) {
     return next(
@@ -142,8 +164,26 @@ const update = async (req, res, next) => {
   }
 };
 
+//------------------ DELETE OFFER --------------------//
+const deleteOffer = async (req, res, next) => {
+  try {
+    const { _id } = req.body;
+    await Offer.findByIdAndDelete(_id);
+    if (await Offer.findById(_id)) {
+      return res.status(404).json('Dont delete');
+    } else {
+      await User.updateMany({ offer: _id }, { $pull: { offer: _id } });
+      return res.status(200).json('Ok delete');
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   createOffer,
   getAllOffer,
-  update,
+  getOfferByID,
+  updateOffer,
+  deleteOffer,
 };
