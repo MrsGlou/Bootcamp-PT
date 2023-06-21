@@ -1,0 +1,10 @@
+.wn-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wn-header > img {
+  border-radius: 300px;
+  height: 100px;
+}
