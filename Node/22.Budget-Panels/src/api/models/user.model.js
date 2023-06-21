@@ -18,7 +18,7 @@ const UserSchema = new Schema(
       minlength: [8, 'Min 8 characters'],
       required: true,
     },
-    rol: { type: String, enum: ['admin', 'basic'], required: true },
+    rol: { type: String, enum: ['admin', 'basic'], default: 'basic' },
     image: { type: String },
     confirmationCode: { type: Number, required: true },
     validated: { type: Boolean, default: false },
