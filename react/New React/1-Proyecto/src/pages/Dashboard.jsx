@@ -4,8 +4,20 @@ const Dashboard = () => {
   return (
     <div>
       <Link to="/gallery">
-        <figure></figure>
+        <figure>
+          <img
+            src="https://www.vinopack.es/wp-content/uploads/2014/11/tienda-zurich.jpg"
+            alt="Wines"
+          />
+        </figure>
       </Link>
+      <button
+        onClick={() => {
+          navigate("/gallery");
+        }}
+      >
+        Gallery
+      </button>
     </div>
   );
 };

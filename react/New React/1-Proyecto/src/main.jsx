@@ -8,6 +8,8 @@ import Gallery from "./pages/Gallery.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Login from "./pages/Login.jsx";
 import GalleryDetail from "./pages/GalleryDetail.jsx";
+import Protected from "./components/Protected.jsx";
+
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -17,7 +19,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/" element={<App />}>
           <Route index element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/gallery" element={<Gallery />} />
+          <Route
+            path="/gallery"
+            element={
+              <Protected>
+                <Gallery />
+              </Protected>
+            }
+          />
           <Route path="/gallery/:id" element={<GalleryDetail />} />
           <Route path="*" element={<NotFound />} />
         </Route>
