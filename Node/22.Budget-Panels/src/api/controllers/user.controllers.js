@@ -181,10 +181,7 @@ const login = async (req, res, next) => {
         const token = generateToken(user._id, email);
         //Devolvemos el user auth y el token
         return res.status(200).json({
-          user: {
-            email,
-            _id: user._id,
-          },
+          user: user,
           token,
         });
       } else {
