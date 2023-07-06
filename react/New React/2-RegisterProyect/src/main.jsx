@@ -7,27 +7,29 @@ import Register from "./pages/Register.jsx";
 import Home from "./pages/Home.jsx";
 import ValidationCode from "./pages/ValidationCode.jsx";
 import Login from "./pages/Login";
-
 import Protected from "./components/Protected.jsx";
+import { AuthContextProvider } from "./context/authContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter basename="/">
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route
-            index
-            element={
-              <Protected>
-                <Home />
-              </Protected>
-            }
-          />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/validationcode" element={<ValidationCode />} />
-        </Route>
-      </Routes>
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route
+              index
+              element={
+                <Protected>
+                  <Home />
+                </Protected>
+              }
+            />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/validationcode" element={<ValidationCode />} />
+          </Route>
+        </Routes>
+      </AuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

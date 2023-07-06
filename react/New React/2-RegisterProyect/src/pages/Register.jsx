@@ -1,15 +1,16 @@
-import { useForm } from "react-hook-form";
 import "./Register.css";
-
+import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { registerUser } from "../services/API_user/user.service";
+import useRegisterError from "../hooks/useRegisterError";
+import { useAuth } from "../context/authContext";
 
 import Uploadfile from "../components/Uploadfile";
-import { registerUser } from "../services/API_user/user.service";
 import Spinner from "../components/Spinner";
-import { Link, Navigate } from "react-router-dom";
-import useRegisterError from "../hooks/useRegisterError";
 
 const Register = () => {
+  const { allUser, setAllUser, bridgeData } = useAuth();
   const { register, handleSubmit } = useForm();
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
@@ -30,7 +31,7 @@ const Register = () => {
       setRes(await registerUser(custonFormData));
       setSend(false);
 
-      //! me llamo al servicio
+      //llamammos al servicio
     } else {
       const custonFormData = {
         ...formData,
@@ -40,16 +41,18 @@ const Register = () => {
       setRes(await registerUser(custonFormData));
       setSend(false);
 
-      ///! me llamo al servicio
+      //llamamoos al servicio
     }
   };
 
   useEffect(() => {
-    useRegisterError(res, setRegisterOk);
+    useRegisterError(res, setRegisterOk, setRes, setAllUser);
+    if (res?.status == 200) bridgeData("ALLUSER");
   }, [res]);
 
+  //Navegación
   if (registerOk) {
-    console.log("YA puedes navegar");
+    console.log("Ya puedes navegar");
     return <Navigate to="/verifyCode" />;
   }
 

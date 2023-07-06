@@ -1,22 +1,83 @@
 import Spinner from "../components/Spinner";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { validationCode } from "../services/API_user/user.service";
+import {
+  validationCode,
+  resendValidationCode,
+} from "../services/API_user/user.service";
+import { useAuth } from "../context/authContext";
+import { all } from "axios";
+import useValidationCode from "../hooks/useValidationCode";
+import useAutoLogin from "../hooks/useAutoLogin";
+import { Navigate } from "react-router-dom";
 
 const ValidationCode = () => {
-  const { register, handleSubmit } = useForm();
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
+  const [validationOk, setValidationOk] = useState(false);
+  const [reloadPageError, setReloadPageError] = useState(false);
+  const [deleteUser, setDeleteUser] = useState(false);
+  const { allUser, userLogin, setUser, user } = useAuth();
+  const { register, handleSubmit } = useForm();
 
+  //Gestiona los submit de los formularios
   const formSubmit = async (formData) => {
-    setSend(true);
-    setRes(await validationCode(formData));
-    setSend(false);
+    const userLocal = localStorage.getItem("user");
+
+    if (userLocal == null) {
+      // Usuario que viene del registro
+      //-> AllUser solo disponible cuando se realiza el registro previo, sino esta vacio.
+      const custonFormData = {
+        email: allUser.data.user.email,
+        validationCode: parseInt(formData.ValidationCode),
+      };
+
+      //Llamamos al servicio
+      setSend(true);
+      setRes(await validationCode(custonFormData));
+      setSend(false);
+    } else {
+      //Usuario viene del login
+      const custonFormData = {
+        email: user.email,
+        validationCode: parseInt(formData.ValidationCode),
+      };
+      setSend(true);
+      setRes(await validationCode(custonFormData));
+      setSend(false);
+    }
   };
 
+  //Gestionamos los errores
   useEffect(() => {
-    console.log(res);
+    useValidationCode(
+      res,
+      setDeleteUser,
+      setValidationOk,
+      setUser,
+      setReloadPageError,
+      setRes
+    );
   }, [res]);
+
+  //Estados de navegación
+  if (validationOk) {
+    if (!localStorage.getItem("user")) {
+      //autologin
+      setValidationOk(() => false);
+      useAutoLogin(allUser, userLogin, setValidationOk);
+    } else {
+      return <Navigate to="/register" />;
+    }
+  }
+
+  if (deleteUser) {
+    return <Navigate to="/login" />;
+  }
+
+  if (reloadPageError) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <>
