@@ -10,6 +10,7 @@ import { all } from "axios";
 import useValidationCode from "../hooks/useValidationCode";
 import useAutoLogin from "../hooks/useAutoLogin";
 import { Navigate } from "react-router-dom";
+import ButtonResend from "../components/ButtonResend";
 
 const ValidationCode = () => {
   const [res, setRes] = useState({});
@@ -67,12 +68,12 @@ const ValidationCode = () => {
       setValidationOk(() => false);
       useAutoLogin(allUser, userLogin, setValidationOk);
     } else {
-      return <Navigate to="/register" />;
+      return <Navigate to="/home" />;
     }
   }
 
   if (deleteUser) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/register" />;
   }
 
   if (reloadPageError) {
@@ -82,48 +83,44 @@ const ValidationCode = () => {
   return (
     <>
       <div className="form-wrap">
-        <h1>Login</h1>
-        <p>Welcome Back</p>
+        <h1>Verify your code 👌</h1>
+        <p>Write the code sent to your email</p>
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="email_container form-group">
+          <div className="user_container form-group">
             <input
               className="input_user"
-              type="email"
-              id="email"
-              name="email"
+              type="text"
+              id="name"
+              name="name"
               autoComplete="false"
-              {...register("email", { required: true })}
+              {...register("confirmationCode", { required: false })}
             />
             <label htmlFor="custom-input" className="custom-placeholder">
-              email
-            </label>
-          </div>
-
-          <div className="validatedcode_container form-group">
-            <input
-              className="input_user"
-              type="password"
-              id="password"
-              name="password"
-              autoComplete="false"
-              {...register("password", { required: true })}
-            />
-            <label htmlFor="custom-input" className="custom-placeholder">
-              Validation Code
+              Registration code
             </label>
           </div>
 
           <div className="btn_container">
             <button
+              id="btnCheck"
               className="btn"
               type="submit"
               disabled={send}
               style={{ background: send ? "#49c1a388" : "#49c1a2" }}
             >
-              {send ? <Spinner /> : "Login"}
+              Verify Code
             </button>
           </div>
         </form>
+        <div className="btn_container">
+          <ButtonResend setReloadPageError={setReloadPageError} />
+        </div>
+        <p className="bottom-text">
+          <small>
+            If the code is not correct ❌, your user will be deleted from the
+            database and you will need to register again.{" "}
+          </small>
+        </p>
       </div>
     </>
   );
